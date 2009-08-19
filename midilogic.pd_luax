@@ -1,0 +1,175 @@
+-- "Logic" for page 2 of controller
+-- A complete mess
+return function(self, sel, atoms)
+    function mode(sel)
+    -- select main mode
+        self:update_controller(self.v.mode, sel)
+        self.v.mode = sel
+        if sel == 3 or sel == 4 then 
+            if self:calc_preset() then
+                self.v.action = self.v.recstates[sel][self.curpreset]
+                self:show_rec_play_action()
+            else 
+                action(0)
+            end
+        else 
+            action(1)
+            self:show_rec_play_action(1)
+        end
+        self.v.pendingsave = false
+        self:do_save_blink()
+        for i = self.ctl[2], self.ctl[2]+3 do self:ctlout(0, i) end
+    end
+    function action(sel)
+    -- select action: load, save...
+        prev = self.v.action
+        self.v.action = sel
+        if self.v.mode == 3 or self.v.mode == 4 then
+            if self.v.action == prev then
+                self:outlet(1, "list", {self.v.mode, "stop", self.curpreset})
+                self.v.action = 0
+            elseif self.v.action == 1 then
+                self:outlet(1, "list", {self.v.mode, "play", self.curpreset})
+            elseif self.v.action == 2 then
+                self:outlet(1, "list", {self.v.mode, "rec", self.curpreset})
+            end
+            self.v.recstates[self.v.mode][self.curpreset] = self.v.action
+            self:show_rec_play_action()
+        else
+            if self.v.action == 2 then
+                if not self.v.pendingsave then 
+                    self.v.pendingsave = true
+                    self:verbose("Choose bank+slot, then press save again.")
+                else 
+                    self.v.pendingsave = false
+                    self:verbose("Saved as " .. tostring(self.curpreset) ..".")
+                    self:outlet(1, "list", {self.v.mode, "save", self.v.inst[self.v.mode], self.curpreset})
+                end
+                self:do_save_blink()
+            elseif self.v.pendingsave then 
+                self.v.pendingsave = false
+                self:do_save_blink()
+            end
+        end
+    end
+    function bank(sel)
+    -- select preset bank
+        self:verbose(string.format("Bank %d chosen", sel))
+        self.v.bank[self.v.mode] = sel
+    end
+    function slot(sel)
+    -- select preset slot
+        self:verbose(string.format("Slot %d chosen", sel))
+        self.v.slot[self.v.mode] = sel
+        self:preset()
+    end
+    function instsel(sel)
+    --select instrument - on which instrument to apply the change
+        if self.v.inst[self.v.mode] then self:ctlout(0, self.v.inst[self.v.mode]) end
+        self.v.inst[self.v.mode] = sel
+        self:ctlout(127, sel)
+        self:outlet(1, "list", {self.v.mode, "inst", sel})
+    end
+
+    --START defining variables
+    self.midi = {}
+    -- mode, action, bank, slot, inst
+    self.ctl = {65,105,73,77,33}
+    for i = self.ctl[1], self.ctl[1]+7 do self.midi[i] = {mode, i - self.ctl[1] + 1 } end
+    for i = self.ctl[2], self.ctl[2]+3 do self.midi[i] = {action, i - self.ctl[2] + 1} end
+    for i = self.ctl[3], self.ctl[3]+3 do self.midi[i] = {bank, i - self.ctl[3]} end
+    for i = self.ctl[4], self.ctl[4]+3 do self.midi[i] = {slot, i - self.ctl[4]} end
+    for i = self.ctl[5], self.ctl[5]+7 do self.midi[i] = {instsel, i - self.ctl[5] + 1 } end
+    self.v = {}
+    self.v.mode = 1
+    self.v.action = 1
+    self.v.pendingsave = false
+    self.v.doneinput = false
+    self.v.recstates = {}
+    for i = 3,4 do 
+        self.v.recstates[i] = {} 
+        for j = 0,15 do self.v.recstates[i][j] = 0 end 
+    end
+    self.v.bank = {}
+    self.v.slot = {}
+    self.v.inst = {}
+    for i = 1,8 do self.v.bank[i], self.v.inst[i], self.v.slot[i] = 0, 1, 0 end
+    self.curpreset = 0
+    --END defining variables
+
+    --Inlets: Midi ctlin
+    self.inlets = 1
+    --Outlets: Messages to dsp, messages to ui/controller
+    self.outlets = 2
+
+    function self:in_1_list(sel, atoms)
+        --Midi ctlin messages (value, control). No error checking!
+        s = (sel[1] == 0 or sel[1] == 127) and self.midi[sel[2]] or nil
+        if s then s[1](s[2]) end
+        if sel[1] == 0 then self:ctlout(126, sel[2]) end
+    end
+
+    function self:calc_preset()
+        -- Calculate preset number from bank/slot
+        bank = self.v.bank[self.v.mode]
+        slot = self.v.slot[self.v.mode]
+        if bank ~= nil and slot ~= nil then
+            sel = (bank * 4) + slot
+            self.curpreset = sel
+            return true
+        else
+            return false
+        end
+    end
+
+    function self:preset()
+        --Change preset and send out load message, in case we need to
+        if self:calc_preset() then
+            self:verbose(string.format("Preset %d chosen", self.curpreset))
+        else return
+        end
+        inst = self.v.inst[self.v.mode]
+        if self.v.action == 1 then
+            self:verbose(string.format(
+            "Mode %d loading preset %d", self.v.mode, sel))
+            self:outlet(1, "list", {self.v.mode, "load", inst, sel} )
+        else self:outlet(1, "list", {self.v.mode, "select", inst, sel} )
+        end
+        if self.v.mode == 3 or self.v.mode == 4 then
+            self.v.action = self.v.recstates[self.v.mode][self.curpreset]
+            self:show_rec_play_action()
+        end
+
+    end
+    function self:update_controller(cur, new)
+        --Update controllers on mode change
+        --args: current (previous) mode, new mode
+        self:ctlout(0, self.v.bank[cur] + self.ctl[3])
+        self:ctlout(127, self.v.bank[new] + self.ctl[3])
+        self:ctlout(0, self.v.slot[cur] + self.ctl[4])
+        self:ctlout(127, self.v.slot[new] + self.ctl[4])
+        self:ctlout(0, self.v.inst[cur] )
+        self:ctlout(127, self.v.inst[new])
+    end
+    function self:ctlout(v, c)
+        --Send ctlout messages
+        self:outlet(2, "ctlout", {v, c})
+    end
+    function self:verbose(s)
+        --Print method which might be commented out
+        pd.post(s)
+    end
+    function self:do_save_blink()
+        --start/stop save blink
+        if self.v.pendingsave then i = 1 else i = 0 end
+        self:outlet(2, "blink", {"save", i}) 
+    end
+    function self:show_rec_play_action(a)
+        --play/rec/stop blink/blink/no-blink
+        a = a or self.v.action + 1
+        actions = {"stop", "play", "rec"}
+        self:outlet (2, "blink", {actions[a]})
+    end
+
+    return true
+end

@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>882</width>
+    <height>397</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="ParamBox" name="parambox_5">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/gtr/1</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>hann</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4th root sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quartic sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>reverse pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>triangle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quasigaussian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rexpodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>expodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sinc</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="ParamToggleButton" name="paramTogglebutton">
+        <property name="text">
+         <string>Align to Onsets</string>
+        </property>
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>onsetalign</string>
+        </property>
+        <property name="paramDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>gtr1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="ParamSpinBox" name="paramSpinbox">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string/>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>16</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Tempo sync</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="ParamAnything" name="paramAnything">
+        <property name="text">
+         <string>Window</string>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="ParamSpinBox" name="paramSpinbox_2">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>9</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="ParamBox" name="parambox_6">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/grandel</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>grandel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="ParamBox" name="parambox_2">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/delay</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>delay</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="ParamBox" name="parambox_3">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/gtr/2</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>gtr2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="ParamToggleButton" name="paramTogglebutton_2">
+        <property name="text">
+         <string>Align to Onsets</string>
+        </property>
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>onsetalign</string>
+        </property>
+        <property name="paramDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_4">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>temposync</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>16</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Tempo sync</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_3">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>9</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="ParamAnything" name="paramAnything_2">
+        <property name="text">
+         <string>Window</string>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QComboBox" name="comboBox_2">
+        <item>
+         <property name="text">
+          <string>hann</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4th root sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quartic sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>reverse pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>triangle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quasigaussian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rexpodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>expodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sinc</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="ParamBox" name="parambox_7">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/gtr/4</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>gtr4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="ParamToggleButton" name="paramTogglebutton_4">
+        <property name="text">
+         <string>Align to Onsets</string>
+        </property>
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>onsetalign</string>
+        </property>
+        <property name="paramDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Tempo sync</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_8">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>temposync</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>16</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QComboBox" name="comboBox_4">
+        <item>
+         <property name="text">
+          <string>hann</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4th root sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quartic sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>reverse pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>triangle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quasigaussian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rexpodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>expodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sinc</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_7">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>9</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="ParamAnything" name="paramAnything_4">
+        <property name="text">
+         <string>Window</string>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="ParamBox" name="parambox_8">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/gtr/3</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>gtr3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="ParamToggleButton" name="paramTogglebutton_3">
+        <property name="text">
+         <string>Align to Onsets</string>
+        </property>
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>onsetalign</string>
+        </property>
+        <property name="paramDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Tempo sync</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_6">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>temposync</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>16</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="ParamSpinBox" name="paramSpinbox_5">
+        <property name="standardAction">
+         <number>-2</number>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+        <property name="paramMin">
+         <number>0</number>
+        </property>
+        <property name="paramMax">
+         <number>9</number>
+        </property>
+        <property name="paramDefault">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="ParamAnything" name="paramAnything_3">
+        <property name="text">
+         <string>Window</string>
+        </property>
+        <property name="paramPath">
+         <string>window</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QComboBox" name="comboBox_3">
+        <item>
+         <property name="text">
+          <string>hann</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4th root sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quartic sine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>reverse pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>pear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>triangle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>quasigaussian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rexpodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>expodec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sinc</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="ParamBox" name="parambox_9">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>main</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="ParamBox" name="parambox_4">
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="paramPath">
+      <string>/pd/dist</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>dist</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ParamSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>paramwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ParamAnything</class>
+   <extends>QLabel</extends>
+   <header>paramwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ParamToggleButton</class>
+   <extends>QPushButton</extends>
+   <header>paramwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ParamBox</class>
+   <extends>QFrame</extends>
+   <header>paramboxcontroller</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>paramSpinbox_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>70</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>paramSpinbox_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>comboBox</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>41</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>paramSpinbox_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>comboBox_2</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>98</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_2</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>paramSpinbox_3</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>paramSpinbox_5</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>comboBox_3</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>587</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_3</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>paramSpinbox_5</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>523</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>paramSpinbox_7</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>comboBox_4</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>776</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>780</x>
+     <y>98</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_4</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>paramSpinbox_7</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>714</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>718</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,69 @@
+--Maps incoming (playerID, sample, channels) to (preloaderID, sample, channels)
+--Taking care of all bad things, 
+--in the code below, "player" is a bad name for "preloader".
+--and "id" is perhaps the $0 of the sampleplayer abstraction.
+--Johannes Burström 2009. (excuse the code soup)
+
+return function(self, sel, atoms)
+    local id2sample = {}
+    local sample2player = {}
+    local maxplayers = atoms[1] or 16
+    if not atoms[1] then pd.post("Safeload-logic: Setting max number of loaders to 16") end
+    self.inlets = 1
+    self.outlets = 1
+    function self:in_1(id,atoms) 
+        local id = atoms[1]
+        local file = atoms[2]
+        local chs = atoms[3]
+        local player = nil
+        local op = nil
+      
+        if id2sample[file] == nil then id2sample[file] = {} end
+
+        -- check what id is playing now
+        local oldsample = id2sample[id]
+        if oldsample == file then 
+            return 
+        end
+        id2sample[id] = file
+        -- check if sample is alredy loaded
+        -- if loaded, add id to id2sample 
+        if sample2player[file] ~= nil then
+            player = sample2player[file]
+            id2sample[file] = { [id] = id }
+            id2sample[id] =  file 
+            sample2player[player].count = sample2player[player].count + 1
+        else
+            -- if not loaded, check for free player
+            for i = 1, maxplayers do
+              if sample2player[i] == nil then
+                  player = i
+                  sample2player[file] = i
+                  sample2player[i] = { [file] = file, count = 1 }
+                  break
+              end
+            end
+        end
+        if not player then 
+            player = sample2player[oldsample] 
+        else
+            op = sample2player[oldsample]
+            if op then
+                sample2player[op].count = sample2player[op].count - 1
+            end
+        end
+        if not player then
+            pd.post("No free player! (and I don't know what to do)")
+        else
+            if oldsample and op then
+                if sample2player[op].count == 0 then 
+                    sample2player[op] = nil 
+                    sample2player[oldsample] = nil
+                end
+            end
+            self:outlet(1, "list", { player, file, chs, id })
+        end
+    end
+
+    return true
+end

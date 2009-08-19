@@ -1,0 +1,34 @@
+return function(self, sel, atoms)
+    local container = { }
+    local snapshots = {}
+  self.inlets = 1
+  self.outlets = 2
+  function self:in_1_bang(sel, atoms) 
+      for k, v in pairs(container) do self:outlet(1, k, v) end
+  end
+  function self:in_1_save(sel, atoms)
+      if snapshots[sel[1]] == nil then snapshots[sel[1]] = {} end
+      for k, v in pairs(container) do snapshots[sel[1]][k] = v end
+  end
+  function self:in_1_load(sel, atoms)
+      if snapshots[sel[1]] ~= nil then 
+          for k, v in pairs(snapshots[sel[1]]) do self:outlet(1, k, v) end
+      end
+  end
+  function self:in_1(sel,atoms) 
+    if atoms[1] == nil then 
+        if container[sel] ~= nil then self:outlet(2, "list", container[sel]) end
+    else container[sel] = atoms
+      end
+  end
+  function self:in_1_print(sel, atoms)
+      pd.post("--- Container contents: ---")
+      local t = container
+      if snapshots[sel[1]] ~= nil then 
+          t = snapshots[sel[1]]
+      end
+        for k, v in pairs(t) do pd.post(k .. " : " .. table.concat(v)) end
+  end
+
+  return true
+end

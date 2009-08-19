@@ -1,0 +1,48 @@
+--A general-purpose key/value storage container with persistence
+--Should be redone as a pure pd_lua class
+
+require("persistence")
+
+return function(self, sel, atoms)
+    local s = {
+        container = {},
+        snapshots = {}
+    }
+  self.inlets = 1
+  self.outlets = 2
+  function self:in_1_bang(sel, atoms) 
+      for k, v in pairs(s.container) do self:outlet(1, k, v) end
+  end
+  function self:in_1_save(sel, atoms)
+      if s.snapshots[sel[1]] == nil then s.snapshots[sel[1]] = {} end
+      for k, v in pairs(s.container) do s.snapshots[sel[1]][k] = v end
+  end
+  function self:in_1_load(sel, atoms)
+      if s.snapshots[sel[1]] ~= nil then 
+          for k, v in pairs(s.snapshots[sel[1]]) do self:outlet(1, k, v) end
+      end
+  end
+  function self:in_1_store(sel, atoms)
+      persistence.store(sel[1], s)
+  end
+  function self:in_1_recall(sel, atoms)
+      set = persistence.load(sel[1])
+      if set ~= nil then s = set end
+  end
+  function self:in_1(sel,atoms) 
+    if atoms[1] == nil then 
+        if s.container[sel] ~= nil then self:outlet(2, "list", s.container[sel]) end
+    else s.container[sel] = atoms
+      end
+  end
+  function self:in_1_print(sel, atoms)
+      pd.post("--- Container contents: ---")
+      local t = s.container
+      if s.snapshots[sel[1]] ~= nil then 
+          t = s.snapshots[sel[1]]
+      end
+        for k, v in pairs(t) do pd.post(k .. " : " .. table.concat(v, " ")) end
+  end
+
+  return true
+end

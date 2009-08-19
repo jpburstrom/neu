@@ -1,0 +1,21 @@
+--Some very simple conditional logic that i found very hard to do in pd for some reason...
+return function(self, sel, atoms)
+    --Inlets: Midi ctlin
+    self.inlets = 1
+    --Outlets: mode (0/1)
+    self.outlets = 2
+    self.mode = 0
+
+    function self:in_1_list(sel, atoms)
+        --Midi ctlin messages (value, control). No error checking!
+        if self.mode == 0 then
+            self:outlet(2, "float", {sel[2]})
+            self.mode = 1
+        elseif sel[2] == 72 then
+            self.mode = 0
+            self:outlet(2, "float", {-1})
+        end
+        self:outlet(1, "float", {self.mode})
+    end
+    return true
+end

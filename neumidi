@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#clear all unnecessary midi connections
+
+
+aconnect -d 14:0 128:0
+aconnect -d 128:1 14:0
+aconnect -d  20:1 128:0
+aconnect -d 128:1 20:1
+aconnect -d 128:1 20:2
+exit 0

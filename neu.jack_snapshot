@@ -1,0 +1,14 @@
+system:capture_1
+ pure_data_0:input0
+system:capture_2
+ pure_data_0:input1
+jconv:Output.L
+ pure_data_0:input2
+jconv:Output.R
+ pure_data_0:input3
+pure_data_0:output0
+ system:playback_1
+pure_data_0:output1
+ system:playback_2
+pure_data_0:output2
+ jconv:Input.L
