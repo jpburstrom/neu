@@ -1,4 +1,4 @@
-#N canvas 563 76 745 581 10;
+#N canvas 197 90 745 581 10;
 #X declare -lib list-abs;
 #X declare -lib hcs;
 #X declare -lib list-abs -lib mrpeach;
@@ -158,7 +158,7 @@
 #X obj 236 -18 inlet;
 #X obj 240 -18 inlet;
 #X obj 126 294 hradio 15 1 0 10 \$0-/window \$0-/window empty 0 -8
-0 10 -262144 -1 -1 0;
+0 10 -262144 -1 -1 7;
 #X text 73 291 Window;
 #X obj 4 272 hradio 15 1 0 17 \$0-/temposync \$0-temposync empty 0
 -8 0 10 -262144 -1 -1 0;
@@ -188,8 +188,6 @@
 #X restore 235 157 pd \$0-gui;
 #X obj -33 170 dispatch \$0 /temposync;
 #X obj -33 189 undispatch \$0 /temposync;
-#X msg -38 116 help;
-#X msg -127 109 /speed 1;
 #X obj -33 256 sendbus-dispatch \$0;
 #X msg 186 343 /bpbwrange 0 5000 \, /pitchrange -4 4 \, /bpfqrange
 0 20000 \, /temposync 0;
@@ -209,7 +207,7 @@
 #X restore 287 111 pd vis;
 #X obj 90 110 routeOSC /\$1;
 #X msg 378 108 symbol 0_init;
-#X obj 277 40 sssad-localtoglobal \$0 \$2 /gtr /\$1;
+#X obj 393 12 sssad-localtoglobal \$0 \$2 /gtr /\$1;
 #X obj -100 136 r \$0-GUI;
 #X obj -33 332 graintrain-onsetalign \$0;
 #X obj 235 85 route /preset /vis;
@@ -220,27 +218,27 @@
 #X obj 235 61 routeOSC /\$1;
 #X msg 13 62 /bank 0 \, /random;
 #X obj -32 378 bufgrainr~ \$0;
-#X connect 0 0 17 0;
-#X connect 5 0 15 0;
-#X connect 6 0 14 0;
+#X connect 0 0 15 0;
+#X connect 5 0 13 0;
+#X connect 6 0 12 0;
 #X connect 7 0 6 0;
 #X connect 8 0 10 0;
 #X connect 10 0 11 0;
 #X connect 11 0 7 0;
-#X connect 14 0 25 0;
-#X connect 15 0 4 0;
-#X connect 17 0 8 0;
-#X connect 18 0 9 0;
-#X connect 20 0 24 0;
-#X connect 21 0 29 0;
-#X connect 22 0 9 0;
-#X connect 22 1 16 0;
-#X connect 23 0 8 0;
-#X connect 24 0 8 0;
-#X connect 25 0 21 0;
-#X connect 26 0 27 0;
-#X connect 27 0 22 0;
-#X connect 28 0 8 0;
-#X connect 29 0 1 0;
-#X connect 29 1 2 0;
-#X connect 29 2 3 0;
+#X connect 12 0 23 0;
+#X connect 13 0 4 0;
+#X connect 15 0 8 0;
+#X connect 16 0 9 0;
+#X connect 18 0 22 0;
+#X connect 19 0 27 0;
+#X connect 20 0 9 0;
+#X connect 20 1 14 0;
+#X connect 21 0 8 0;
+#X connect 22 0 8 0;
+#X connect 23 0 19 0;
+#X connect 24 0 25 0;
+#X connect 25 0 20 0;
+#X connect 26 0 8 0;
+#X connect 27 0 1 0;
+#X connect 27 1 2 0;
+#X connect 27 2 3 0;

@@ -20,11 +20,6 @@ OSC-style messages: /path/to/parameter value
 
 OSC preprocessing => {$0-SSSAD} (+ setonly msg) (might be better with an $0-msg...)
 
-Abstraction GUI's => {$0-SSSAD} (this should be changed -- better with $0-UI or something, send it to the top of the dispatch tree...)
-
-{$0-SSSAD} is the central message bus, where all messages should end up. Since all messages use this bus, it should be easy to create message sequencers, snapshots, or any kind of message handling. 
-
-{MSG} is good to have for rapid prototyping of things, but might be better to use OSC with special /input selectors or something.
 
 
 Machine buttons
@@ -50,32 +45,50 @@ dist
 ====
 dist type? (todo)
 
-r
-=
-reverb type (eller som preset?)
-
-
-make init work
-map VIET & BD
-map globaltempo
-
-fix global pitch, global volume? 
-
-Map parameters to arduino
-
-    * global pitch
-    * distortion
-    * randomness???
-    * feedback amount???
-
 --------------------
 * session files (saved sequences, snapshots etc)
 * save sequences
 
 TODO
 
-OSC logging
+BUGFIX/TESTING
+==============
+snapshot saving - does work?
 Grandel CPU peak
+snapshot keys=>midi
+fix global pitch, global volume? 
 
+MAPPING
+=======
+16xknobs (page2)
+Machine buttons (se ovan)
+rename /machine/todist =>  /machine/to/dist
+eller /routing/inst1/inst2?
+
+IMPLEMENT
+=========
+adc1=>gtr
+adc2=>gtr
+bassdrum volume thing (button
+random file trigger
+remap gtrbp=>offset/size, fq/bw
+gtr offset/size
+session file
+make init work
+Map parameters to arduino
+    * global pitch
+    * distortion
+    * randomness???
+    * feedback amount???
+
+//global pitch
+//global tempo
+//recorder chaos (x8?)
+//snapshot (73-80) midi echo
+//sequencer ditto
+knobs (page2):
+
+====
+report subpatch number rename bug
 
 
