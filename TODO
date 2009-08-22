@@ -1,27 +1,5 @@
 Neu
 ===
-
-
-
-
-Messages
-````````
-
-Sends/Receives in {brackets}
-
-Input (Keyboard, mouse etc) => {MSG} => Preprocessing
-(These messages are freeform any style)
-
-MIDI => {CTLIN-MIDI} (using midi. abstractions) => Preprocessing
-(standard midi ctl messages; value, ctl, (channel).
-
-Preprocessing => {OSC}
-OSC-style messages: /path/to/parameter value
-
-OSC preprocessing => {$0-SSSAD} (+ setonly msg) (might be better with an $0-msg...)
-
-
-
 Machine buttons
 ```````````````
 gtr
@@ -57,19 +35,15 @@ snapshot saving - does work?
 Grandel CPU peak
 snapshot keys=>midi
 fix global pitch, global volume? 
+bassdrum volume thing (button
 
 MAPPING
 =======
 16xknobs (page2)
 Machine buttons (se ovan)
-rename /machine/todist =>  /machine/to/dist
-eller /routing/inst1/inst2?
 
 IMPLEMENT
 =========
-adc1=>gtr
-adc2=>gtr
-bassdrum volume thing (button
 random file trigger
 remap gtrbp=>offset/size, fq/bw
 gtr offset/size
@@ -80,15 +54,17 @@ Map parameters to arduino
     * distortion
     * randomness???
     * feedback amount???
+LATER adc1=>gtr
+LATER adc2=>gtr
+LATER rename /machine/todist =>  /routing/inst1/inst2?
+
+RETHINK
+
+Where should conversion to log/quartic etc take place?
 
 //global pitch
 //global tempo
 //recorder chaos (x8?)
 //snapshot (73-80) midi echo
 //sequencer ditto
-knobs (page2):
-
-====
-report subpatch number rename bug
-
-
+//knobs (page2):
