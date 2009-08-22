@@ -41,7 +41,7 @@
 #X declare -lib list-abs;
 #X floatatom 180 145 5 0 0 0 - - -;
 #X obj 170 115 miditogtr2 1-8 33-40 1 2 3 4 5 6 7 8 128;
-#X obj 87 13 midi.singlestation MIDI;
+#X obj 87 13 mctl-singlestation MIDI;
 #X obj 111 186 print;
 #X obj 58 47 miditogtr2 1-8 33-40 1 2 3 4 5 6 7 8 128 129 130 131 132
 133 134 135;

@@ -1,12 +1,12 @@
 #N canvas 590 474 450 300 10;
 #X obj 133 51 inlet;
+#X obj 134 159 outlet;
 #X obj 134 76 dispatch \$1 /tograndel;
 #X obj 134 96 dispatch \$1 /todelay;
 #X obj 134 116 dispatch \$1 /todist;
 #X obj 134 136 dispatch \$1 /torev;
-#X obj 134 159 outlet;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
+#X connect 0 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
+#X connect 5 0 1 0;
