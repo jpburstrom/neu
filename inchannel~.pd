@@ -1,4 +1,4 @@
-#N canvas 10 66 562 300 10;
+#N canvas 0 19 817 714 10;
 #X declare -lib list-abs -lib mrpeach;
 #N canvas 30 154 450 300 vumeter 0;
 #X obj 58 42 env~;

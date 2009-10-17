@@ -1,0 +1,27 @@
+#N canvas 356 257 795 477 10;
+#X obj 30 19 inlet;
+#X obj 216 120 change;
+#X obj 216 142 outlet;
+#X text 350 36 The small midi cell. Requires a mctl-singlestation abstraction
+somewhere \, where the global cc sends are.;
+#X obj 29 129 mctl-nonzerosend \$1 \$2 \$3;
+#X text 350 86 \$1 -- global midi group \; \$2 (req) -- cc number for
+receive and send \; \$3 (opt) -- cc number of gate. (only s/r when
+\$2 is > 0) \; \$4 (opt) -- cc no to listen for min value (useful for
+two controllers defining min and max) \$5 (opt) -- cc no to listen
+for max value (see above) \$6 (opt) -- cc for toggling btwn current
+state and 0;
+#X obj 153 80 mctl-spigot \$1 \$3;
+#X obj 70 17 r \$1-INOUT;
+#X obj 71 41 route force_output;
+#X obj 31 80 mctl-spigot \$1 \$3;
+#X obj 154 59 mctl-inlet \$1 \$2 \$4 \$5 \$6;
+#X connect 0 0 9 0;
+#X connect 1 0 2 0;
+#X connect 6 0 1 0;
+#X connect 6 0 4 1;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X connect 9 0 4 0;
+#X connect 9 1 4 1;
+#X connect 10 0 6 0;

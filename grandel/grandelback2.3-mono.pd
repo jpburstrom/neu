@@ -1,4 +1,4 @@
-#N canvas 0 19 714 693 10;
+#N canvas 0 19 766 693 10;
 #X declare -lib hcs;
 #X declare -lib list-abs -lib mrpeach;
 #X declare -lib list-abs -lib mrpeach;
@@ -294,18 +294,17 @@
 #X obj 684 480 dispatch \$0 /density;
 #X obj 684 500 dispatch \$0 /speeddev;
 #X obj 684 520 dispatch \$0 /speed;
-#N canvas 0 19 714 714 \$0-gui 0;
+#N canvas 0 19 817 714 \$0-gui 0;
 #X obj 6 -24 cnv 15 270 20 empty empty Grandel~ 1 12 0 14 -261234 -66577
 0;
 #X obj 236 -18 inlet;
 #X obj 240 -18 inlet;
 #X obj 126 254 hradio 15 1 0 10 \$0-window \$0-window empty 0 -8 0
-10 -262144 -1 -1 8;
+10 -262144 -1 -1 0;
 #X text 73 251 Window;
 #X obj 4 232 hradio 15 1 0 17 \$0-/transpdevq empty empty 0 -8 0 10
 -262144 -1 -1 0;
 #X floatatom 260 251 5 0 0 0 - - -;
-#X obj 42 -1 sssad.presets_ grandel~ \$0;
 #X obj 142 109 sssad-slider \$0 /transp -12 12;
 #X obj 142 189 sssad-tgl \$0 /freeze;
 #X obj 3 189 sssad-tgl \$0 /onoff;
@@ -321,7 +320,8 @@
 #X obj 142 169 sssad-slider \$0 /delay 0 1 log;
 #X obj 3 169 sssad-slider \$0 /delaydev 0 1;
 #X obj 2 68 sssad-slider \$0 /speed 0 1;
-#X connect 1 0 7 0;
+#X obj 42 -1 sssad.presets_ grandel~ \$0;
+#X connect 1 0 22 0;
 #X connect 5 0 6 0;
 #X restore 562 113 pd \$0-gui;
 #N canvas 30 154 450 300 vis 0;
@@ -378,7 +378,6 @@
 #X msg 614 59 /vis 1;
 #X obj 20 271 import iemlib;
 #X obj 708 51 r \$0-GUI;
-#X obj 721 80 print;
 #X connect 0 0 7 0;
 #X connect 0 1 8 0;
 #X connect 1 0 17 0;
@@ -471,4 +470,3 @@
 #X connect 82 0 81 0;
 #X connect 83 0 76 0;
 #X connect 85 0 67 0;
-#X connect 85 0 86 0;

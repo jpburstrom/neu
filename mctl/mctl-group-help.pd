@@ -1,0 +1,56 @@
+#N canvas 0 0 714 469 10;
+#X declare -lib list-abs;
+#X obj 497 22 mctl-singlestation \$0-MIDI;
+#X obj 86 273 mctl-group \$0-MIDI 1-127;
+#X obj 86 354 unpack f f;
+#X floatatom 88 381 5 0 0 0 - - -;
+#X floatatom 150 382 5 0 0 0 - - -;
+#X obj 87 252 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 227 300 5 0 0 0 - - -;
+#X obj 263 301 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 264 321 f;
+#X obj 291 320 + 1;
+#X floatatom 264 345 5 0 0 0 - - -;
+#X text 253 281 Output all values when toggle=1;
+#X text 85 234 Toggle output of values;
+#X floatatom 229 251 5 0 0 0 - - -;
+#X text 267 246 These messages goes straight through to 2nd outlet
+if toggle=1. Don't know why this should be useful.;
+#X text 159 352 Output ctlin;
+#X msg 48 172 set 127 55;
+#X obj 257 376 route 127;
+#X floatatom 258 397 5 0 0 0 - - -;
+#X msg 47 147 reset;
+#X text 124 173 Set value of specific controller (value \, controller)
+;
+#X obj 300 397 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 50 124 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 46 18 [mctl-group] groups any number of midi controllers. Usable
+for creating different modes with the same physical controllers.;
+#X text 91 147 Set all values to zero (internally \, outputs nothing)
+;
+#X text 74 122 Output all current (value \, controller) pairs in right
+outlet;
+#X text 309 339 The right outlet is used for updating the controller
+with the current values.;
+#X connect 1 0 2 0;
+#X connect 1 1 6 0;
+#X connect 1 1 7 0;
+#X connect 1 1 17 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 5 0 1 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 1;
+#X connect 13 0 1 1;
+#X connect 16 0 1 0;
+#X connect 17 0 18 0;
+#X connect 17 0 21 0;
+#X connect 19 0 1 0;
+#X connect 22 0 1 0;

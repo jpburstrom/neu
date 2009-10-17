@@ -1,0 +1,82 @@
+#N canvas 0 19 817 714 10;
+#X text 482 178 Johannes Burstrom 2009;
+#X obj 372 417 outlet;
+#X text 431 418 Outlet is sending out all nonzero cc v/cc pairs before
+other processing;
+#X obj 434 507 t b b;
+#X obj 435 531 delay 1000;
+#X obj 464 552 0;
+#X obj 436 551 1;
+#X text 435 453 This can be used to set a temporary off-toggling of
+the exclusivity \, so several cc's in a group can be selected within
+a certain amount of time:;
+#X text 248 108 Make a group of midi controllers (toggles) mutually
+exclusive. The group is set by initial argument \, and the behaviour
+can be turned off and on by toggling the inlet.;
+#X text 355 222 Controllers are expressed as floats or ranges (x-y).
+See list-range help file.;
+#X obj 523 529 list 0 (this could be a mctl-exclusive object);
+#X obj 85 143 pack 0 0;
+#X obj 85 357 list append;
+#X obj 85 411 unpack 0 0 0;
+#X obj 86 444 sel;
+#X obj 103 507 pack 0 0;
+#X msg 103 530 \$2 \$1;
+#X obj 58 89 sel 0;
+#X obj 85 233 t a a;
+#X obj 114 274 sel;
+#X obj 85 311 list;
+#X obj 58 50 spigot 1;
+#X obj 177 12 inlet;
+#X obj 85 168 t b a a;
+#X obj 57 10 mctl-prectlin \$1;
+#X obj 85 188 list;
+#X obj 220 185 dollarg;
+#X obj 220 206 list split 1;
+#X obj 220 157 loadbang;
+#X obj 199 543 outlet;
+#X msg 126 451 127 \$1;
+#X obj 128 477 -;
+#X text 390 300 FIXME: A way to remember current state \, so we don't
+have to send out zeroes to the whole group;
+#X obj 103 566 mctl-ctlout \$1;
+#X obj 86 336 drip;
+#X obj 254 227 mctl-intervals;
+#X obj 114 254 drip;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 10 0;
+#X connect 6 0 10 0;
+#X connect 10 0 3 0;
+#X connect 11 0 23 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 30 0;
+#X connect 13 2 14 1;
+#X connect 14 1 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 29 0;
+#X connect 16 0 33 0;
+#X connect 17 1 11 0;
+#X connect 18 0 20 1;
+#X connect 18 1 36 0;
+#X connect 19 0 20 0;
+#X connect 20 0 34 0;
+#X connect 21 0 17 0;
+#X connect 22 0 21 1;
+#X connect 23 0 25 0;
+#X connect 23 1 12 1;
+#X connect 23 2 1 0;
+#X connect 24 0 21 0;
+#X connect 24 1 11 1;
+#X connect 24 1 19 1;
+#X connect 25 0 18 0;
+#X connect 26 0 27 0;
+#X connect 27 1 35 0;
+#X connect 28 0 26 0;
+#X connect 30 0 31 0;
+#X connect 31 0 15 1;
+#X connect 34 0 12 0;
+#X connect 35 0 25 1;
+#X connect 36 0 19 0;

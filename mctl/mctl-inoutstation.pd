@@ -1,0 +1,65 @@
+#N canvas 282 395 749 433 10;
+#N canvas 565 257 450 300 \$0-foo 0;
+#X restore 603 23 pd \$0-foo;
+#X obj 473 343 s pd-\$0-foo;
+#X obj 473 317 list trim;
+#X obj 417 96 textfile;
+#X obj 373 115 t b a;
+#X obj 417 15 loadbang;
+#X obj 418 37 symbol \$2;
+#X obj 90 52 mctl-singlestation \$1;
+#X obj 64 10 inlet;
+#X text 110 10 this is main toggle. Here can toggle logic come.;
+#X msg 473 94 init;
+#X obj 463 117 s \$1-INOUT;
+#X obj 62 98 s \$1-INOUT;
+#X msg 62 73 force_output;
+#X text 17 128 Read textfile with cryptic midi=>inout routings and
+create routing objects accordingly. The textfile has the following
+format \; cc gatecc mincc maxcc togglezerocc grouplabel paramlabel
+scalefrommidiabstraction with args scaletomidiabstraction with args
+\; where cc is main knob \; gatecc is a button or anything that should
+be >0 for cc to work \; mincc is another cc which sets the min value
+for this one \; maxcc is the same but max value \; grouplabel is the
+group/machine/abstraction label used by the INOUT system \; paramlabel
+is the param label used by INOUT and sssad \; scalefrommidiabstraction
+with args: any abstraction that takes two arguments and transforms
+a number \; scaletomidiabstraction with args: like above \, but inverted.
+;
+#X text 19 375 JOhannes Burstrom 2009-03-23;
+#X obj 434 159 route #;
+#X obj 434 139 list trim;
+#X msg 417 62 read \$1 cr \, rewind \, bang;
+#X obj 473 295 list prepend;
+#X obj 473 272 list prepend mctl-inoutbridge \$1;
+#X obj 500 245 list prepend obj 0;
+#X obj 473 180 t a b;
+#X obj 368 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 528 212 + 32;
+#X obj 500 212 0;
+#X obj 63 31 t b b;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 3 1 10 0;
+#X connect 4 0 3 0;
+#X connect 4 1 17 0;
+#X connect 5 0 6 0;
+#X connect 6 0 18 0;
+#X connect 8 0 26 0;
+#X connect 10 0 11 0;
+#X connect 13 0 12 0;
+#X connect 16 1 22 0;
+#X connect 17 0 16 0;
+#X connect 18 0 3 0;
+#X connect 19 0 2 0;
+#X connect 20 0 19 0;
+#X connect 21 0 19 1;
+#X connect 22 0 20 0;
+#X connect 22 1 25 0;
+#X connect 23 0 6 0;
+#X connect 24 0 25 1;
+#X connect 25 0 21 0;
+#X connect 25 0 24 0;
+#X connect 26 0 13 0;
+#X connect 26 1 7 0;

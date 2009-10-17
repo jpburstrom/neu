@@ -1,0 +1,37 @@
+#N canvas 367 457 450 300 10;
+#X obj 259 185 outlet;
+#X floatatom 101 113 5 0 0 0 - - -;
+#X obj 101 101 cnv 15 33 12 empty \$0-cnv 86 2 7 0 10 -233017 -66577
+0;
+#X msg 195 94 set \$1;
+#X obj 262 14 ctlin;
+#X obj 101 172 ctlout;
+#X obj 101 144 list \$1;
+#X obj 271 127 == \$1;
+#X obj 260 163 spigot;
+#X obj 123 103 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 302 66 spigot;
+#X obj 276 36 t a a;
+#X obj 316 89 t b a;
+#X obj 319 173 s \$0-cnv;
+#X obj 328 123 makefilename %d;
+#X msg 321 147 label \$1;
+#X connect 1 0 6 0;
+#X connect 3 0 1 0;
+#X connect 4 0 8 0;
+#X connect 4 1 11 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 1;
+#X connect 8 0 0 0;
+#X connect 8 0 3 0;
+#X connect 9 0 10 1;
+#X connect 10 0 12 0;
+#X connect 11 0 7 0;
+#X connect 11 1 10 0;
+#X connect 12 0 9 0;
+#X connect 12 1 7 1;
+#X connect 12 1 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X coords 0 -1 1 1 35 30 2 100 100;

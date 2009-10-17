@@ -1,0 +1,13 @@
+#N canvas 0 19 766 714 10;
+#X obj 74 -14 inlet~;
+#X obj 73 35 z~ 64;
+#X obj 73 79 *~;
+#X obj 73 133 outlet~;
+#X obj 74 110 hip~ 5;
+#X obj 158 36 limiter~ 10;
+#X connect 0 0 1 0;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 1;

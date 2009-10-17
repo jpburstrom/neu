@@ -1,0 +1,28 @@
+#N canvas 5 44 904 511 10;
+#X declare -lib iemmatrix;
+#X obj 108 54 osc~ 222;
+#X obj 106 210 vumeter~;
+#X obj 422 46 mctl-singlestation;
+#X obj 422 92 mctl-setcontrols;
+#X msg 422 116 81 82 89 90 97 83 84 91 92 100 85 86 93 94 102 87 88
+95 96 104;
+#X obj 422 70 loadbang;
+#X obj 205 41 mctl-ctlin;
+#X obj 204 64 pack f f;
+#X text 300 389 A 4-in \, 5-out matrix mixer for midi control;
+#X obj 106 172 mctl-mixer-4x5~ 127;
+#X text 202 22 Here comes midi messages;
+#X text 422 148 This list sets the cc values \, and should be set before
+all things work. The cc's are set in this order:;
+#X text 421 171 1->1 \, 1->2 \, 1->3 \, 1->4 \, 1->5 \, 2->1 \, 2->2
+(...);
+#X text 702 470 Johannes Burström 2009;
+#X connect 0 0 9 0;
+#X connect 0 0 9 1;
+#X connect 3 0 4 0;
+#X connect 4 0 9 9;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 6 1 7 1;
+#X connect 7 0 9 8;
+#X connect 9 0 1 0;

@@ -1,0 +1,46 @@
+#N canvas 281 125 766 457 10;
+#X declare -lib iemmatrix;
+#X obj 141 203 lc~;
+#X obj 192 151 sig~ 1;
+#X obj 343 203 lc~;
+#X obj 142 109 mctl-mtx-route 2 3;
+#X obj 141 179 mtx_mul~ 2 3 10 ------------------;
+#X msg 339 151;
+#X obj 241 152 sig~ 2.3;
+#X msg 139 23 0 2;
+#X msg 189 51 1 2;
+#X floatatom 563 160 5 0 0 0 - - -;
+#X msg 238 54 1 \$1;
+#X msg 278 74 0 \$1;
+#X obj 303 43 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 343 63 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X text 140 276 [mctl-mtx-route];
+#X text 141 301 incoming [value \, index] messages (where index starts
+at 0 \, and is (first send=>first recv \, first send=>second recv)
+and so on) to matrix. Create with (rows \, cols) where rows are receives
+and cols are sends.;
+#X msg 274 105 10 11 12 13 14 15;
+#X text 144 364 Third arg is midi scale (default 127);
+#X text 146 386 It also applies a quartic transformation of the incoming
+values.;
+#X msg 9 44 0 10;
+#X text 391 106 Midi map;
+#X text 47 44 Midi messages;
+#X text 170 24 Regular messages;
+#X obj 328 85 loadbang;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 4 1 2 0;
+#X connect 6 0 4 2;
+#X connect 7 0 3 1;
+#X connect 8 0 3 1;
+#X connect 10 0 3 1;
+#X connect 11 0 3 1;
+#X connect 12 0 10 0;
+#X connect 13 0 11 0;
+#X connect 16 0 3 2;
+#X connect 19 0 3 0;
+#X connect 23 0 16 0;
