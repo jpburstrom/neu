@@ -1,0 +1,4 @@
+#N canvas 0 19 714 714 10;
+#X declare -path grandel;
+#X obj 579 13 declare -path grandel;
+#X obj 104 131 grandelback2.3-mono;

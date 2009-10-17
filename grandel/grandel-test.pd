@@ -1,0 +1,19 @@
+#N canvas 0 19 714 714 10;
+#X declare -lib hcs;
+#X declare -lib list-abs -lib mrpeach;
+#X declare -lib list-abs -lib mrpeach;
+#X declare -lib iemlib;
+#X obj 355 111 globalvar presetdir /home/johannes/pd/neu/presets;
+#X obj 61 301 grandelback2.3-mono;
+#X msg 173 278 /vis 1;
+#X obj 281 44 testtable foo;
+#X obj 61 268 tabplay~ foo;
+#X floatatom 79 238 5 0 0 0 - - -;
+#X obj 60 249 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 24 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 2 0 1 1;
+#X connect 4 0 1 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
