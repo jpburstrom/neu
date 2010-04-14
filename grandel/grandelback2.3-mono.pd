@@ -1,13 +1,13 @@
-#N canvas 0 19 766 693 10;
+#N canvas 632 22 766 693 10;
 #X declare -lib hcs;
 #X declare -lib list-abs -lib mrpeach;
 #X declare -lib list-abs -lib mrpeach;
 #X declare -lib iemlib;
-#N canvas 0 19 766 714 grains 0;
+#N canvas 0 22 766 714 grains 0;
 #X obj 160 182 outlet~;
 #X obj 106 182 outlet~;
 #X obj 105 142 gdcell2.3-mono \$0 0 3000;
-#N canvas 0 19 766 714 31-grains 0;
+#N canvas 0 22 766 714 31-grains 0;
 #X obj 27 369 outlet~;
 #X obj 581 213 outlet~;
 #X obj 49 17 gdcell2.3-mono \$0 1 3000;
@@ -122,7 +122,7 @@
 #X obj 298 283 sel 0;
 #X obj 298 309 0;
 #X obj 418 86 table \$0-trigr 64;
-#N canvas 0 15 610 716 generate 0;
+#N canvas 0 22 610 716 generate 0;
 #X obj 124 21 loadbang;
 #X obj 124 91 0;
 #X obj 154 91 + 1;
@@ -294,17 +294,17 @@
 #X obj 684 480 dispatch \$0 /density;
 #X obj 684 500 dispatch \$0 /speeddev;
 #X obj 684 520 dispatch \$0 /speed;
-#N canvas 0 19 817 714 \$0-gui 0;
+#N canvas 67 23 306 374 \$0-gui 1;
 #X obj 6 -24 cnv 15 270 20 empty empty Grandel~ 1 12 0 14 -261234 -66577
 0;
 #X obj 236 -18 inlet;
 #X obj 240 -18 inlet;
-#X obj 126 254 hradio 15 1 0 10 \$0-window \$0-window empty 0 -8 0
-10 -262144 -1 -1 0;
+#X obj 126 254 hradio 15 1 0 10 \$0-/window \$0-/window empty 0 -8
+0 10 -262144 -1 -1 9;
 #X text 73 251 Window;
 #X obj 4 232 hradio 15 1 0 17 \$0-/transpdevq empty empty 0 -8 0 10
 -262144 -1 -1 0;
-#X floatatom 260 251 5 0 0 0 - - -;
+#X floatatom 268 234 5 0 0 0 - - -;
 #X obj 142 109 sssad-slider \$0 /transp -12 12;
 #X obj 142 189 sssad-tgl \$0 /freeze;
 #X obj 3 189 sssad-tgl \$0 /onoff;
