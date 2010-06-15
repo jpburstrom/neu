@@ -1,12 +1,16 @@
 /todist 0.0351751;
 /transpdev 0.0277895;
-/vol 1;
+/vol 0.242105;
+/voldev 0.336842;
 /speed 0.230524;
+/speeddev 0.421053;
 /density 0.63587;
 /delay 0.0104967;
 /delaydev 0;
+/gliss 0;
 /onoff 1;
 /window 6;
 /send 1;
 /senddev 0.00576842;
+/sizedev 0;
 /transp 0;
